@@ -5,9 +5,10 @@ import br.com.orangetalents.casadocodigo.novoautor.Autor;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 public class Livro {
@@ -35,19 +36,20 @@ public class Livro {
     @NotBlank
     private String isbn;
 
-    @JsonFormat(pattern = "dd-MM-yyyy", shape = JsonFormat.Shape.STRING)
-    @Future
-    private LocalDateTime dataPublicacao;
+    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
+    private @Future LocalDate dataPublicacao;
 
-    @NotBlank
-    @OneToOne
+    @NotNull
+    @Valid
+    @ManyToOne
     private Categoria categoria;
 
-    @NotBlank
-    @OneToOne
+    @NotNull
+    @Valid
+    @ManyToOne
     private Autor autor;
 
-    public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, String sumario, @NotNull @Min(value = 20) BigDecimal preco, @NotNull @Min(value = 100) Integer numeroPaginas, @NotBlank String isbn, LocalDateTime dataPublicacao, @NotBlank Categoria categoria, @NotBlank Autor autor) {
+    public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, String sumario, @NotNull @Min(value = 20) BigDecimal preco, @NotNull @Min(value = 100) Integer numeroPaginas, @NotBlank String isbn, @Future LocalDate dataPublicacao, @NotNull @Valid Categoria categoria, @NotNull @Valid Autor autor) {
         this.titulo = titulo;
         this.resumo = resumo;
         this.sumario = sumario;
