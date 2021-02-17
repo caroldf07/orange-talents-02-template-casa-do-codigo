@@ -1,9 +1,0 @@
-INDEX VERSION 1.4+C:\Users\carolina.fonseca\orange-talents\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-1558754322.index
-1532149616.index
-929916098.index
-1470190290.index
-456790899.index
-1532149616.index
-931375359.index
-1204045674.index
