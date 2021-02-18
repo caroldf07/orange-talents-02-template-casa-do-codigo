@@ -1,10 +1,10 @@
-package br.com.orangetalents.casadocodigo.compartilhado.validação;
+package br.com.orangetalents.casadocodigo.compartilhado.validacao;
 
-public class ValidationError {
+public class ValidacaoErro {
     private String campo;
     private String mensagem;
 
-    public ValidationError(String campo, String mensagem) {
+    public ValidacaoErro(String campo, String mensagem) {
         this.campo = campo;
         this.mensagem = mensagem;
     }

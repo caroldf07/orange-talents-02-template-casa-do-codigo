@@ -12,17 +12,20 @@ import java.time.LocalDate;
 
 @Entity
 public class Livro {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
+    @Column(unique = true)
     private String titulo;
 
     @NotBlank
     @Size(max = 500)
     private String resumo;
 
+    @Lob
     private String sumario;
 
     @NotNull
@@ -31,38 +34,36 @@ public class Livro {
 
     @NotNull
     @Min(value = 100)
-    private Integer numeroPaginas;
+    private Integer numeroPagina;
 
     @NotBlank
+    @Column(unique = true)
     private String isbn;
 
-    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
-    private @Future LocalDate dataPublicacao;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    @Future
+    private LocalDate dataPublicacao;
 
     @NotNull
-    @Valid
     @ManyToOne
+    @Valid
     private Categoria categoria;
 
     @NotNull
-    @Valid
     @ManyToOne
+    @Valid
     private Autor autor;
 
-    public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, String sumario, @NotNull @Min(value = 20) BigDecimal preco, @NotNull @Min(value = 100) Integer numeroPaginas, @NotBlank String isbn, @Future LocalDate dataPublicacao, @NotNull @Valid Categoria categoria, @NotNull @Valid Autor autor) {
+    public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, String sumario, @NotNull @Min(value = 20) BigDecimal preco, @NotNull @Min(value = 100) Integer numeroPagina, @NotBlank String isbn, @Future LocalDate dataPublicacao, @NotNull Categoria categoria, @NotNull Autor autor) {
         this.titulo = titulo;
         this.resumo = resumo;
         this.sumario = sumario;
         this.preco = preco;
-        this.numeroPaginas = numeroPaginas;
+        this.numeroPagina = numeroPagina;
         this.isbn = isbn;
         this.dataPublicacao = dataPublicacao;
         this.categoria = categoria;
         this.autor = autor;
-    }
-
-    @Deprecated
-    public Livro() {
     }
 
     @Override
@@ -73,11 +74,12 @@ public class Livro {
                 ", resumo='" + resumo + '\'' +
                 ", sumario='" + sumario + '\'' +
                 ", preco=" + preco +
-                ", numeroPaginas=" + numeroPaginas +
+                ", numeroPagina=" + numeroPagina +
                 ", isbn='" + isbn + '\'' +
                 ", dataPublicacao=" + dataPublicacao +
                 ", categoria=" + categoria +
                 ", autor=" + autor +
                 '}';
     }
+
 }

@@ -3,11 +3,13 @@ package br.com.orangetalents.casadocodigo.novoautor;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
 public class Autor {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,6 +26,7 @@ public class Autor {
     @Size(max = 400)
     private String descricao;
 
+    @NotNull
     private LocalDateTime instante = LocalDateTime.now();
 
     public Autor(@NotBlank String nome, @NotBlank @Email String email, @NotBlank @Size(max = 400) String descricao) {
@@ -32,8 +35,12 @@ public class Autor {
         this.descricao = descricao;
     }
 
+    /*
+     * O Jackson só está serializando com o constructor vazio
+     * */
     @Deprecated
     public Autor() {
+
     }
 
     @Override

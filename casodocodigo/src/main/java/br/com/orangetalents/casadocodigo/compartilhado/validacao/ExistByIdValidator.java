@@ -1,6 +1,4 @@
-package br.com.orangetalents.casadocodigo.compartilhado.validação;
-
-import org.springframework.util.Assert;
+package br.com.orangetalents.casadocodigo.compartilhado.validacao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,29 +9,30 @@ import java.util.List;
 
 public class ExistByIdValidator implements ConstraintValidator<ExistById, Object> {
 
+    @PersistenceContext
+    EntityManager em;
+
     private String domainAttribute;
     private Class<?> klass;
-
-    @PersistenceContext
-    private EntityManager em;
 
     @Override
     public void initialize(ExistById id) {
         domainAttribute = id.fieldName();
         klass = id.domainClass();
+
     }
 
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext context) {
-        if (value == null) {
-            return true;
-        }
-
-        Query query = em.createQuery("select 1 from " + klass.getName() + " where " + domainAttribute + "=:value");
+        Query query = em.createQuery("SELECT 1 FROM " + klass.getName() + " WHERE " + domainAttribute + "=:value");
         query.setParameter("value", value);
 
+        if (value == null) {
+            return false;
+        }
+
         List<?> list = query.getResultList();
-        Assert.isTrue(list.size() <= 1, "Não foi encontrado nenhum atributo com esse id");
+
         return !list.isEmpty();
     }
 }

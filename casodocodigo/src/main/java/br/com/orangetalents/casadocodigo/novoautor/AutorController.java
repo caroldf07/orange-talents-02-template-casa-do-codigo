@@ -17,12 +17,9 @@ public class AutorController {
 
     @PostMapping("/autores")
     @Transactional
-    public String criar(@RequestBody @Valid NovoAutorRequest novoAutor) {
-
+    public String criar(@RequestBody @Valid NovoAutorRequest novoAutor){
         Autor autor = novoAutor.toModel();
         em.persist(autor);
         return autor.toString();
     }
-
-
 }

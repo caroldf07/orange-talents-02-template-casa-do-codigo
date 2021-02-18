@@ -5,6 +5,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Categoria {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,6 +18,9 @@ public class Categoria {
         this.nome = nome;
     }
 
+    /*
+     * O Jackson só está serializando com o constructor vazio
+     * */
     @Deprecated
     public Categoria() {
 

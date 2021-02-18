@@ -1,4 +1,4 @@
-package br.com.orangetalents.casadocodigo.compartilhado.validação;
+package br.com.orangetalents.casadocodigo.compartilhado.validacao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -14,22 +14,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestControllerAdvice
-public class ValidationErrorHandler {
+public class ValidacaoErroHandler {
 
     @Autowired
-    private MessageSource messageSource;
+    MessageSource messageSource;
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public List<ValidationError> handle(MethodArgumentNotValidException exception){
-        List<ValidationError> validationErrors = new ArrayList<>();
-        List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
-        fieldErrors.forEach(erros -> {
-            String mensagem = messageSource.getMessage(erros, LocaleContextHolder.getLocale());
-            ValidationError erro = new ValidationError(erros.getField(),mensagem);
-            validationErrors.add(erro);
+    public List<ValidacaoErro> handle(MethodArgumentNotValidException exception) {
+
+        List<FieldError> fieldError = exception.getBindingResult().getFieldErrors();
+
+        List<ValidacaoErro> validacaoErros = new ArrayList<>();
+
+        fieldError.forEach(erro -> {
+            String mensagem = messageSource.getMessage(erro, LocaleContextHolder.getLocale());
+            ValidacaoErro validacaoErro = new ValidacaoErro(erro.getField(), mensagem);
+
+            validacaoErros.add(validacaoErro);
         });
 
-        return validationErrors;
+        return validacaoErros;
+
     }
 }

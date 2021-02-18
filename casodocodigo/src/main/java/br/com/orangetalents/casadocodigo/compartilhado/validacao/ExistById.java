@@ -1,12 +1,12 @@
-package br.com.orangetalents.casadocodigo.compartilhado.validação;
+package br.com.orangetalents.casadocodigo.compartilhado.validacao;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Documented
+@Target(ElementType.FIELD)
 @Constraint(validatedBy = {ExistByIdValidator.class})
-@Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ExistById {
     String message() default "{br.com.orangetalents.beanvalidation.existbyid}";

@@ -1,6 +1,6 @@
 package br.com.orangetalents.casadocodigo.novoautor;
 
-import br.com.orangetalents.casadocodigo.compartilhado.validação.UniqueValue;
+import br.com.orangetalents.casadocodigo.compartilhado.validacao.UniqueValue;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +12,7 @@ public class NovoAutorRequest {
 
     @NotBlank
     @Email
-    @UniqueValue(domainClass = Autor.class,fieldName = "email")
+    @UniqueValue(domainClass = Autor.class, fieldName = "email")
     private String email;
 
     @NotBlank
@@ -25,11 +25,8 @@ public class NovoAutorRequest {
         this.descricao = descricao;
     }
 
-    public Autor toModel(){
-        return new Autor(this.nome, this.email, this.descricao);
-    }
 
-    public String getEmail() {
-        return email;
+    public Autor toModel() {
+        return new Autor(this.nome, this.email, this.descricao);
     }
 }
