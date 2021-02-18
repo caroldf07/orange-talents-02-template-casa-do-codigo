@@ -15,8 +15,8 @@ public class NovaCategoriaRequest {
     }
 
     /*
-    * Por algum motivo, o jackson só funciona quando crio o constructor vazio + o getter da variável
-    * */
+     * Por algum motivo, o jackson só funciona quando crio o constructor vazio + o getter da variável
+     * */
     @Deprecated
     public NovaCategoriaRequest() {
 

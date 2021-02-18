@@ -1,5 +1,7 @@
 package br.com.orangetalents.casadocodigo.novoautor;
 
+import br.com.orangetalents.casadocodigo.paginadetalhes.DetalheAutorResponse;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -43,6 +45,22 @@ public class Autor {
 
     }
 
+    /*
+     * Getters criados para o DetalheAutorResponse
+     * */
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
     @Override
     public String toString() {
         return "Autor{" +
@@ -52,5 +70,13 @@ public class Autor {
                 ", descricao='" + descricao + '\'' +
                 ", instante=" + instante +
                 '}';
+    }
+
+
+
+    public DetalheAutorResponse fromModelToDetail(EntityManager em) {
+        Autor autor = em.find(Autor.class, id);
+
+        return new DetalheAutorResponse(autor.getNome(), autor.getDescricao());
     }
 }

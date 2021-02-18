@@ -9,6 +9,9 @@ public class ValidacaoErro {
         this.mensagem = mensagem;
     }
 
+    /*
+     * Getters criados para serem utilizados em ValidationErroHandler
+     * */
     public String getCampo() {
         return campo;
     }

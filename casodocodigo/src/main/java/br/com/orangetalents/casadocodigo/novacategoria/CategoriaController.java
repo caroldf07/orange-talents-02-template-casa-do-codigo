@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 
+//Carga cognitiva de 3
 @RestController
 public class CategoriaController {
 
@@ -17,7 +18,7 @@ public class CategoriaController {
 
     @PostMapping("/categorias")
     @Transactional
-    public String criar(@RequestBody @Valid NovaCategoriaRequest novaCategoria){
+    public String criar(@RequestBody @Valid NovaCategoriaRequest novaCategoria) {
         Categoria categoria = novaCategoria.toModel();
         em.persist(categoria);
         return categoria.toString();

@@ -2,6 +2,8 @@ package br.com.orangetalents.casadocodigo.novolivro;
 
 import br.com.orangetalents.casadocodigo.novacategoria.Categoria;
 import br.com.orangetalents.casadocodigo.novoautor.Autor;
+import br.com.orangetalents.casadocodigo.paginadetalhes.DetalheAutorResponse;
+import br.com.orangetalents.casadocodigo.paginadetalhes.DetalheLivroResponse;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
@@ -40,7 +42,7 @@ public class Livro {
     @Column(unique = true)
     private String isbn;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)
     @Future
     private LocalDate dataPublicacao;
 
@@ -54,7 +56,11 @@ public class Livro {
     @Valid
     private Autor autor;
 
-    public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo, String sumario, @NotNull @Min(value = 20) BigDecimal preco, @NotNull @Min(value = 100) Integer numeroPagina, @NotBlank String isbn, @Future LocalDate dataPublicacao, @NotNull Categoria categoria, @NotNull Autor autor) {
+    public Livro(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo,
+                 String sumario, @NotNull @Min(value = 20) BigDecimal preco,
+                 @NotNull @Min(value = 100) Integer numeroPagina, @NotBlank String isbn,
+                 @Future LocalDate dataPublicacao, @NotNull Categoria categoria,
+                 @NotNull Autor autor) {
         this.titulo = titulo;
         this.resumo = resumo;
         this.sumario = sumario;
@@ -64,6 +70,13 @@ public class Livro {
         this.dataPublicacao = dataPublicacao;
         this.categoria = categoria;
         this.autor = autor;
+    }
+
+    /*
+     * O Jackson não consegue deserializar sem o constructor vazio, por isso criei ele
+     * */
+    @Deprecated
+    public Livro() {
     }
 
     @Override
@@ -82,4 +95,54 @@ public class Livro {
                 '}';
     }
 
+    /*
+     * Getters criados para a configuração dos métodos fromModelTo...
+     * */
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getResumo() {
+        return resumo;
+    }
+
+    public String getSumario() {
+        return sumario;
+    }
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public Integer getNumeroPagina() {
+        return numeroPagina;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public LocalDate getDataPublicacao() {
+        return dataPublicacao;
+    }
+
+    public LivroResponse fromModelToResponse(EntityManager em) {
+        Livro livro = em.find(Livro.class, id);
+        return new LivroResponse(livro.getId(), livro.getTitulo());
+    }
+
+    public DetalheLivroResponse fromModelToDetail(EntityManager em) {
+        Livro livro = em.find(Livro.class, id);
+        Autor autor = em.find(Autor.class, livro.autor.getId());
+
+
+        return new DetalheLivroResponse(livro.getTitulo(), livro.getResumo(), livro.getSumario(),
+                livro.getPreco(), livro.getNumeroPagina(), livro.getIsbn(),
+                new DetalheAutorResponse(autor.getNome(), autor.getDescricao()));
+    }
 }
