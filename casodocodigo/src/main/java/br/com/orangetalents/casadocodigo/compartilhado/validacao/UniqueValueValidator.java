@@ -7,6 +7,7 @@ import javax.persistence.Query;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.List;
+import java.util.Locale;
 
 public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Object> {
 
@@ -17,7 +18,7 @@ public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Ob
 
     @Override
     public void initialize(UniqueValue uniqueValue) {
-        domainAttribute = uniqueValue.fieldName();
+        domainAttribute = uniqueValue.fieldName().toLowerCase();
         klass = uniqueValue.domainClass();
     }
 
