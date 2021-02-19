@@ -1,5 +1,7 @@
-package br.com.orangetalents.casadocodigo.novoautor;
+package br.com.orangetalents.casadocodigo.novoautor.controller;
 
+import br.com.orangetalents.casadocodigo.novoautor.NovoAutorRequest;
+import br.com.orangetalents.casadocodigo.novoautor.model.Autor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

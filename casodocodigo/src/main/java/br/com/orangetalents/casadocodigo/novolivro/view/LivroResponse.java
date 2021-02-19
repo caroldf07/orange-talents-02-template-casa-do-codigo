@@ -1,4 +1,4 @@
-package br.com.orangetalents.casadocodigo.novolivro;
+package br.com.orangetalents.casadocodigo.novolivro.view;
 
 public class LivroResponse {
 

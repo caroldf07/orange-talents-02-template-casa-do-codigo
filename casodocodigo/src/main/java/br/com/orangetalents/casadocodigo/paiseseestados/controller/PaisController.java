@@ -1,5 +1,7 @@
-package br.com.orangetalents.casadocodigo.cadastropaiseseestados;
+package br.com.orangetalents.casadocodigo.paiseseestados.controller;
 
+import br.com.orangetalents.casadocodigo.paiseseestados.PaisRequest;
+import br.com.orangetalents.casadocodigo.paiseseestados.model.Pais;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +26,7 @@ public class PaisController {
         Pais pais = paisRequest.toModel();
         em.persist(pais);
         return pais.toString();
-
     }
+
+
 }

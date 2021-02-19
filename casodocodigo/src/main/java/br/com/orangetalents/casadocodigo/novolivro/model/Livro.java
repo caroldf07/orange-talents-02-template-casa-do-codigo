@@ -1,9 +1,10 @@
-package br.com.orangetalents.casadocodigo.novolivro;
+package br.com.orangetalents.casadocodigo.novolivro.model;
 
-import br.com.orangetalents.casadocodigo.novacategoria.Categoria;
-import br.com.orangetalents.casadocodigo.novoautor.Autor;
-import br.com.orangetalents.casadocodigo.paginadetalhes.DetalheAutorResponse;
-import br.com.orangetalents.casadocodigo.paginadetalhes.DetalheLivroResponse;
+import br.com.orangetalents.casadocodigo.novacategoria.model.Categoria;
+import br.com.orangetalents.casadocodigo.novoautor.model.Autor;
+import br.com.orangetalents.casadocodigo.novolivro.view.LivroResponse;
+import br.com.orangetalents.casadocodigo.paginadetalhes.view.DetalheAutorResponse;
+import br.com.orangetalents.casadocodigo.paginadetalhes.view.DetalheLivroResponse;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;

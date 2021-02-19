@@ -2,8 +2,9 @@ package br.com.orangetalents.casadocodigo.novolivro;
 
 import br.com.orangetalents.casadocodigo.compartilhado.validacao.ExistById;
 import br.com.orangetalents.casadocodigo.compartilhado.validacao.UniqueValue;
-import br.com.orangetalents.casadocodigo.novacategoria.Categoria;
-import br.com.orangetalents.casadocodigo.novoautor.Autor;
+import br.com.orangetalents.casadocodigo.novacategoria.model.Categoria;
+import br.com.orangetalents.casadocodigo.novoautor.model.Autor;
+import br.com.orangetalents.casadocodigo.novolivro.model.Livro;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.EntityManager;

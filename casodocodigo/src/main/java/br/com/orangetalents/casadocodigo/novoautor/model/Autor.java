@@ -1,6 +1,6 @@
-package br.com.orangetalents.casadocodigo.novoautor;
+package br.com.orangetalents.casadocodigo.novoautor.model;
 
-import br.com.orangetalents.casadocodigo.paginadetalhes.DetalheAutorResponse;
+import br.com.orangetalents.casadocodigo.paginadetalhes.view.DetalheAutorResponse;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

@@ -1,10 +1,10 @@
-package br.com.orangetalents.casadocodigo.novacategoria;
+package br.com.orangetalents.casadocodigo.paiseseestados.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Categoria {
+public class Pais {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,21 +14,20 @@ public class Categoria {
     @Column(unique = true)
     private String nome;
 
-    public Categoria(@NotBlank String nome) {
+    public Pais(@NotBlank String nome) {
         this.nome = nome;
     }
 
     /*
-     * O Jackson só está serializando com o constructor vazio
+     * O Jackson só deserializa essa entidade quando tem um construtor vazio
      * */
     @Deprecated
-    public Categoria() {
-
+    public Pais() {
     }
 
     @Override
     public String toString() {
-        return "Categoria{" +
+        return "Pais{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 '}';

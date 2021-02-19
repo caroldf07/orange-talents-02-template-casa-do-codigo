@@ -1,6 +1,7 @@
 package br.com.orangetalents.casadocodigo.novacategoria;
 
 import br.com.orangetalents.casadocodigo.compartilhado.validacao.UniqueValue;
+import br.com.orangetalents.casadocodigo.novacategoria.model.Categoria;
 
 import javax.validation.constraints.NotBlank;
 

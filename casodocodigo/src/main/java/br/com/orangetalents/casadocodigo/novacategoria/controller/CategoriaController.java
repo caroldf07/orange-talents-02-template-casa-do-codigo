@@ -1,5 +1,7 @@
-package br.com.orangetalents.casadocodigo.novacategoria;
+package br.com.orangetalents.casadocodigo.novacategoria.controller;
 
+import br.com.orangetalents.casadocodigo.novacategoria.NovaCategoriaRequest;
+import br.com.orangetalents.casadocodigo.novacategoria.model.Categoria;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

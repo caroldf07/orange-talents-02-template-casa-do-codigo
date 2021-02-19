@@ -1,4 +1,4 @@
-package br.com.orangetalents.casadocodigo.paginadetalhes;
+package br.com.orangetalents.casadocodigo.paginadetalhes.view;
 
 public class DetalheAutorResponse {
 

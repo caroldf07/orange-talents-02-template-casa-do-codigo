@@ -1,6 +1,7 @@
 package br.com.orangetalents.casadocodigo.novoautor;
 
 import br.com.orangetalents.casadocodigo.compartilhado.validacao.UniqueValue;
+import br.com.orangetalents.casadocodigo.novoautor.model.Autor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

@@ -1,6 +1,7 @@
-package br.com.orangetalents.casadocodigo.paginadetalhes;
+package br.com.orangetalents.casadocodigo.paginadetalhes.controller;
 
-import br.com.orangetalents.casadocodigo.novolivro.Livro;
+import br.com.orangetalents.casadocodigo.novolivro.model.Livro;
+import br.com.orangetalents.casadocodigo.paginadetalhes.view.DetalheLivroResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
