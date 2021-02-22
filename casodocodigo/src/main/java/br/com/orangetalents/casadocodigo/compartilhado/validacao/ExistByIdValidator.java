@@ -29,7 +29,7 @@ public class ExistByIdValidator implements ConstraintValidator<ExistById, Object
         query.setParameter("value", value);
 
         if (value == null) {
-            return false;
+            return true;
         }
 
         List<?> list = query.getResultList();

@@ -7,14 +7,16 @@ import java.util.List;
 @Entity
 public class Pais {
 
-    @OneToMany(mappedBy = "pais", cascade = CascadeType.ALL)
-    private static List<Estado> estados;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotBlank
     @Column(unique = true)
     private String nome;
+
+    @OneToMany(mappedBy = "pais", cascade = CascadeType.ALL)
+    private List<Estado> estados;
 
     public Pais(@NotBlank String nome) {
         this.nome = nome;
@@ -34,4 +36,13 @@ public class Pais {
                 ", nome='" + nome + '\'' +
                 '}';
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public List<Estado> getEstados() {
+        return estados;
+    }
+
 }
