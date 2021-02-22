@@ -23,6 +23,13 @@ public class Estado {
         this.pais = pais;
     }
 
+    /*
+     * O Jackson só deserializa essa entidade quando tem um construtor vazio
+     * */
+    @Deprecated
+    public Estado() {
+    }
+
     @Override
     public String toString() {
         return "Estado{" +
@@ -30,5 +37,21 @@ public class Estado {
                 ", nome='" + nome + '\'' +
                 "," + pais +
                 '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public boolean pertencePais(Pais pais) {
+        return this.pais.equals(pais);
     }
 }

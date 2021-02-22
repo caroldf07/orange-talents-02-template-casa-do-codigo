@@ -2,14 +2,16 @@ package br.com.orangetalents.casadocodigo.paiseseestados.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 public class Pais {
 
+    @OneToMany(mappedBy = "pais", cascade = CascadeType.ALL)
+    private static List<Estado> estados;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @NotBlank
     @Column(unique = true)
     private String nome;
