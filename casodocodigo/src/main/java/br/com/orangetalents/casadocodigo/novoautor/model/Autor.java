@@ -73,7 +73,6 @@ public class Autor {
     }
 
 
-
     public DetalheAutorResponse fromModelToDetail(EntityManager em) {
         Autor autor = em.find(Autor.class, id);
 

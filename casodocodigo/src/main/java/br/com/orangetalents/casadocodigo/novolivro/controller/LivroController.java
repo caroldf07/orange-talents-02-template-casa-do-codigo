@@ -1,10 +1,11 @@
 package br.com.orangetalents.casadocodigo.novolivro.controller;
 
-import br.com.orangetalents.casadocodigo.novolivro.repository.LivroRepository;
-import br.com.orangetalents.casadocodigo.novolivro.view.LivroResponse;
 import br.com.orangetalents.casadocodigo.novolivro.NovoLivroRequest;
 import br.com.orangetalents.casadocodigo.novolivro.model.Livro;
+import br.com.orangetalents.casadocodigo.novolivro.repository.LivroRepository;
+import br.com.orangetalents.casadocodigo.novolivro.view.LivroResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-//Carga Cognitiva de 6
+//Carga Cognitiva de 5
 @RestController
 @RequestMapping("/livros")
 public class LivroController {
@@ -27,10 +28,10 @@ public class LivroController {
 
     @PostMapping
     @Transactional
-    public String criar(@RequestBody @Valid NovoLivroRequest novoLivro) {
+    public ResponseEntity<String> criar(@RequestBody @Valid NovoLivroRequest novoLivro) {
         Livro livro = novoLivro.toModel(em);
         em.persist(livro);
-        return livro.toString();
+        return ResponseEntity.ok(livro.toString());
     }
 
     /*

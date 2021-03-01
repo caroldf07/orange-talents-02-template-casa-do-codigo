@@ -39,8 +39,8 @@ public class DetalheLivroResponse {
 
 
     /*
-    * Getters criados para o jackson
-    * */
+     * Getters criados para o jackson
+     * */
     public String getTitulo() {
         return titulo;
     }

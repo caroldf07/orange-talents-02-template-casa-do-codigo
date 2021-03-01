@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-//Carga cognitiva de 5
+//Carga cognitiva de 4
 @RestController
 @RequestMapping("/produtos")
 public class PaginaDetalhesController {
@@ -24,8 +24,8 @@ public class PaginaDetalhesController {
 
         Livro livro = em.find(Livro.class, id);
 
-        if(livro == null){
-           return ResponseEntity.notFound().build();
+        if (livro == null) {
+            return ResponseEntity.notFound().build();
         }
         DetalheLivroResponse detalheLivroResponse = livro.fromModelToDetail(em);
 

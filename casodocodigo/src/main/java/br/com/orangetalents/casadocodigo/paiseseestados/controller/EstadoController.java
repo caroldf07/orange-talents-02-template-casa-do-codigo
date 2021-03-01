@@ -2,6 +2,7 @@ package br.com.orangetalents.casadocodigo.paiseseestados.controller;
 
 import br.com.orangetalents.casadocodigo.paiseseestados.EstadoRequest;
 import br.com.orangetalents.casadocodigo.paiseseestados.model.Estado;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 
+//Carga cognitiva de 2
 @RestController
 @RequestMapping("/estados")
 public class EstadoController {
@@ -21,11 +23,11 @@ public class EstadoController {
 
     @PostMapping
     @Transactional
-    public String criar(@RequestBody @Valid EstadoRequest estadoRequest){
+    public ResponseEntity<String> criar(@RequestBody @Valid EstadoRequest estadoRequest) {
         Estado estado = estadoRequest.toModel(em);
         em.persist(estado);
 
-        return  estado.toString();
+        return ResponseEntity.ok(estado.toString());
 
     }
 }

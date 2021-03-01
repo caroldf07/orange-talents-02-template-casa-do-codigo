@@ -2,6 +2,7 @@ package br.com.orangetalents.casadocodigo.paiseseestados.controller;
 
 import br.com.orangetalents.casadocodigo.paiseseestados.PaisRequest;
 import br.com.orangetalents.casadocodigo.paiseseestados.model.Pais;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,10 +23,10 @@ public class PaisController {
 
     @PostMapping
     @Transactional
-    public String criar(@RequestBody @Valid PaisRequest paisRequest) {
+    public ResponseEntity<String> criar(@RequestBody @Valid PaisRequest paisRequest) {
         Pais pais = paisRequest.toModel();
         em.persist(pais);
-        return pais.toString();
+        return ResponseEntity.ok(pais.toString());
     }
 
 

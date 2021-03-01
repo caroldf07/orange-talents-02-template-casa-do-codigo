@@ -132,11 +132,18 @@ public class Livro {
         return dataPublicacao;
     }
 
+
+    /*
+     * Método criado para a listagem de todos os livros
+     * */
     public LivroResponse fromModelToResponse(EntityManager em) {
         Livro livro = em.find(Livro.class, id);
         return new LivroResponse(livro.getId(), livro.getTitulo());
     }
 
+    /*
+     * Método criado para o detalhamento de um livro pelo ID
+     * */
     public DetalheLivroResponse fromModelToDetail(EntityManager em) {
         Livro livro = em.find(Livro.class, id);
         Autor autor = em.find(Autor.class, livro.autor.getId());
