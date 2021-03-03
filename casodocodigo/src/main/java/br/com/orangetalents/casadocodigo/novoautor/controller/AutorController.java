@@ -24,6 +24,6 @@ public class AutorController {
     public ResponseEntity<String> criar(@RequestBody @Valid NovoAutorRequest novoAutor) {
         Autor autor = novoAutor.toModel();
         em.persist(autor);
-        return ResponseEntity.ok(autor.toString());
+        return ResponseEntity.ok().build();
     }
 }

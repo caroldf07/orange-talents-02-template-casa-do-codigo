@@ -24,6 +24,6 @@ public class CategoriaController {
     public ResponseEntity<String> criar(@RequestBody @Valid NovaCategoriaRequest novaCategoria) {
         Categoria categoria = novaCategoria.toModel();
         em.persist(categoria);
-        return ResponseEntity.ok(categoria.toString());
+        return ResponseEntity.ok().build();
     }
 }

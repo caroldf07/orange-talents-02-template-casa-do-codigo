@@ -31,7 +31,7 @@ public class LivroController {
     public ResponseEntity<String> criar(@RequestBody @Valid NovoLivroRequest novoLivro) {
         Livro livro = novoLivro.toModel(em);
         em.persist(livro);
-        return ResponseEntity.ok(livro.toString());
+        return ResponseEntity.ok().build();
     }
 
     /*
